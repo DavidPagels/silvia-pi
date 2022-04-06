@@ -11,13 +11,9 @@ he_pin = 7
 sample_time = 0.1
 
 # PID Proportional, Integral, and Derivative values
-pc = 3.4
-ic = 0.3
-dc = 40.0
-
-pw = 2.9
-iw = 0.3
-dw = 40.0
+p = 3.4
+i = 0.3
+d = 40.0
 
 # Web/REST Server Options
 port = 8080

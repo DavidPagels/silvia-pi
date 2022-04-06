@@ -34,16 +34,15 @@ async def rest_server(log, port, pidHandler, boiler):
 
   @routes.get('/allstats')
   def allstats(request):
-    pid = pidHandler.get_cur_pid()
+    pid = pidHandler.pid
     response = {
       "i": pidHandler.i,
       "hestat": 1 if boiler.last_mode else 0,
-      "iscold": pidHandler.cold,
       "settemp": pidHandler.set_point,
       "pterm": round(pid.Kp, 2),
       "iterm": round(pid.Ki, 2),
       "dterm": round(pid.Kd, 2),
-      "pidval": round(pidHandler.output()),
+      "pidval": round(pidHandler.pid.output),
       "avgpid": round(pidHandler.avg_pid, 2),
       "temp": pidHandler.temperature_sensor.get_temperature()
     }

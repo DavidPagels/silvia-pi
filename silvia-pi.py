@@ -25,7 +25,7 @@ if __name__ == '__main__':
     boiler = boiler.Boiler(conf.he_pin)
     temperature_sensor = temperature_sensor.TemperatureSensor()
 
-  pid_handler = PidHandler(log, temperature_sensor, conf.pc, conf.pw, conf.ic, conf.iw, conf.dc, conf.dw, set_point, conf.sample_time)
+  pid_handler = PidHandler(log, temperature_sensor, conf.p, conf.i, conf.d, set_point, conf.sample_time)
   heating_element_controller = HeatingElementController(log, boiler, pid_handler)
   web_server = rest_server(log, conf.port, pid_handler, boiler)
 
