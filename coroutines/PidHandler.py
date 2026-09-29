@@ -31,10 +31,11 @@ class PidHandler:
     pickle.dump({"set_point": set_point}, open(str(sys.path[0]) + "/setpoint.p", "wb" ))
 
   async def pid_loop(self):
-    with open("Failedcsv.csv","a+") as tempFile:
+    with open("PidTuning.csv","w+") as tempFile:
       fieldNames = ["time","avgtemp","settemp"]
       writer = csv.DictWriter(tempFile,fieldnames=fieldNames)
- 
+      writer.writeheader() 
+
       while True:
         try:
           temp = self.temperature_sensor.get_temperature()
